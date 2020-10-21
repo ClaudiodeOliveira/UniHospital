@@ -78,38 +78,8 @@ public class TipoFuncionarioBean implements Serializable {
         this.tipoFuncionario = tipoFuncionario;
     }
 
-    // List tipoFuncionarios = new ArrayList();
-
-    /*public TipoFuncionarioBean() {
-        tipoFuncionarios = new TipoFuncionarioDAO().buscarTodas();
-        tipoFuncionario = new TipoFuncionario();
-    }
-
-    public void salvar(ActionEvent actionEvent) {
-        new TipoFuncionarioDAO().persistir(tipoFuncionario);
-        tipoFuncionarios = new TipoFuncionarioDAO().buscarTodas();
-        tipoFuncionario = new TipoFuncionario();
-    }
-
-    public void remover(ActionEvent actionEvent) {
-        new TipoFuncionarioDAO().remover(tipoFuncionario);
-        tipoFuncionarios = new TipoFuncionarioDAO().buscarTodas();
-        tipoFuncionario = new TipoFuncionario();
-    }
-
-    public TipoFuncionario getTipoFuncionario() {
-        return tipoFuncionario;
-    }
-
-    public void setTipoFuncionario(TipoFuncionario tipoFuncionario) {
+    public void carregar(TipoFuncionario tipoFuncionario) {
         this.tipoFuncionario = tipoFuncionario;
     }
 
-    public List getTipoFuncionarios() {
-        return tipoFuncionarios;
-    }
-
-    public void setTipoFuncionarios(List tipoFuncionarios) {
-        this.tipoFuncionarios = tipoFuncionarios;
-    }*/
 }

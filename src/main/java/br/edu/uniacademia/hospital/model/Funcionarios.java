@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -71,11 +72,11 @@ public class Funcionarios implements Serializable {
     private List<Prontuarios> prontuariosList;
 
     @JoinColumn(name = "Enderecos_idEnderecos", referencedColumnName = "idEndereco")
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Enderecos enderecosidEnderecos;
 
     @JoinColumn(name = "tipoFuncionario_idtipoFuncionario", referencedColumnName = "idtipoFuncionario")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private TipoFuncionario tipoFuncionarioidtipoFuncionario;
 
     public Funcionarios() {

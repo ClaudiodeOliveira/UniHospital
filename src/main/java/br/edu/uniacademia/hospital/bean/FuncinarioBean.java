@@ -138,12 +138,20 @@ public class FuncinarioBean implements Serializable {
         this.funcionario = this.fundao.buscarPorId(funcionario.getIdFuncionario());
     }
 
+    public void carregarEndereco(Enderecos enderecos) {
+        this.enderecos = this.enddao.buscarPorId(enderecos.getIdEndereco());
+    }
+
     public Enderecos getEnderecos() {
         return enderecos;
     }
 
     public void setEnderecos(Enderecos enderecos) {
         this.enderecos = enderecos;
+    }
+
+    public void setFuncionario(Funcionarios funcionario) {
+        this.funcionario = funcionario;
     }
 
 }

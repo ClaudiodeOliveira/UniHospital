@@ -45,12 +45,12 @@
 
                     <p:column headerText="Opções" exportable="false">
                         <center>
-                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();"> 
+                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();" update="formPrincipal2:panelRecord" process="@this"> 
                                 <f:setPropertyActionListener target="#{funcinarioBean.funcionario}"
                                                              value="#{listaFun}" />
                             </p:commandButton>
 
-                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{funcinarioBean.remover(listaFun)}" process="@this" update="tabela2"/>
+                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{funcinarioBean.remover(listaFun)}" process="@this" update="@form"/>
 
                         </center>
                     </p:column>
@@ -87,9 +87,7 @@
                 </h:commandLink>
 
             </div>
-        </h:form>
 
-        <h:form id="dialog">
             <p:dialog header="Novo" widgetVar="record" modal="true" focus="funcionario">
 
 
@@ -136,11 +134,6 @@
                                  actionListener="#{funcinarioBean.gravar}" onclick="record.hide()" alt="Record"/> 
             </p:dialog>
 
-            <p:dialog header="Deletar" widgetVar="remove" modal="false"> 
-                Você tem certeza?
-                <p:commandButton value="Deletar"  
-                                 actionListener="#{funcinarioBean.remover(listaFun)}" onclick="remove.hide()" alt="Delete" process="@this" update=":formPrincipal2" /> 
-            </p:dialog>
         </h:form>
 
 

@@ -31,7 +31,7 @@
                     </p:column>
                     <p:column headerText="Opções" exportable="false">
                         <center>
-                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();"> 
+                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();" update="formPrincipal:panelRecord" process="@this"> 
                                 <f:setPropertyActionListener target="#{tipoFuncionarioBean.tipoFuncionario}"
                                                              value="#{lista}" />
                             </p:commandButton>
