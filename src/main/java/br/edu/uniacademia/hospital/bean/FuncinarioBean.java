@@ -115,7 +115,6 @@ public class FuncinarioBean implements Serializable {
             this.fundao.adiciona(this.funcionario);
             this.funnariosList = this.fundao.listaTodos();
         } else {
-            this.gravarTipoFuncionario();
             this.enddao.atualiza(this.enderecos);
             this.gravarTipoFuncionario();
             this.fundao.atualiza(this.funcionario);
@@ -138,10 +137,6 @@ public class FuncinarioBean implements Serializable {
         this.funcionario = this.fundao.buscarPorId(funcionario.getIdFuncionario());
     }
 
-    public void carregarEndereco(Enderecos enderecos) {
-        this.enderecos = this.enddao.buscarPorId(enderecos.getIdEndereco());
-    }
-
     public Enderecos getEnderecos() {
         return enderecos;
     }
@@ -152,6 +147,8 @@ public class FuncinarioBean implements Serializable {
 
     public void setFuncionario(Funcionarios funcionario) {
         this.funcionario = funcionario;
+        this.enderecos = enddao.buscarPorId(funcionario.getEnderecosidEnderecos().getIdEndereco());
+        
     }
 
 }
