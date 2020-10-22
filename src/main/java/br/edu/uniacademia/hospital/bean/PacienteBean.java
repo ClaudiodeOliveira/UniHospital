@@ -8,9 +8,7 @@ package br.edu.uniacademia.hospital.bean;
 import br.edu.uniacademia.hospital.dao.EnderecoDAO;
 import br.edu.uniacademia.hospital.dao.PacienteDAO;
 import br.edu.uniacademia.hospital.model.Enderecos;
-import br.edu.uniacademia.hospital.model.Funcionarios;
 import br.edu.uniacademia.hospital.model.Pacientes;
-import br.edu.uniacademia.hospital.model.Prontuarios;
 import br.edu.uniacademia.hospital.tx.Transacional;
 import java.io.Serializable;
 import java.util.List;
@@ -32,12 +30,6 @@ public class PacienteBean implements Serializable {
     @Inject
     private Enderecos enderecos;
 
-    @Inject
-    private Prontuarios prontuarios;
-
-    @Inject
-    private Funcionarios funcionarios;
-
     private Long pacienteId;
 
     private Long enderecoId;
@@ -49,14 +41,6 @@ public class PacienteBean implements Serializable {
 
     @Inject
     private EnderecoDAO enddao;
-
-    public Long getEnderecoId() {
-        return enderecoId;
-    }
-
-    public void setEnderecoId(Long enderecoId) {
-        this.enderecoId = enderecoId;
-    }
 
     public List<Pacientes> getPacienteList() {
         if (this.pacienteList == null) {
