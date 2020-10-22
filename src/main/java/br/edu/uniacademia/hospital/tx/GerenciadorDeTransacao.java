@@ -8,6 +8,10 @@ import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 import javax.persistence.EntityManager;
 
+/**
+ *
+ * @author claud
+ */
 @Transacional
 @Interceptor
 public class GerenciadorDeTransacao implements Serializable {

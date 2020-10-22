@@ -6,7 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import javax.interceptor.InterceptorBinding;
-
+/**
+ *
+ * @author claud
+ */
 @InterceptorBinding
 @Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

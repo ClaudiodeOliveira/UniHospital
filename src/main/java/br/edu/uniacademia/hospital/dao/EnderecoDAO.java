@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author tassi
+ * @author claud
  */
 public class EnderecoDAO implements Serializable {
 
