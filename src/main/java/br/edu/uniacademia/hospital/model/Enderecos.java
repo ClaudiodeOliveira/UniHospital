@@ -5,7 +5,12 @@
  */
 package br.edu.uniacademia.hospital.model;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -47,39 +52,39 @@ public class Enderecos implements Serializable {
     @Basic(optional = false)
     @Column(name = "idEndereco")
     private Long idEndereco;
-   
+
     @Size(max = 45)
     @Column(name = "logradouro")
     private String logradouro;
-    
+
     @Column(name = "numero")
     private Integer numero;
-   
+
     @Size(max = 45)
     @Column(name = "complemento")
     private String complemento;
-    
+
     @Size(max = 45)
     @Column(name = "bairro")
     private String bairro;
-   
+
     @Basic(optional = false)
     @Size(min = 1, max = 45)
     @Column(name = "localidade")
     private String localidade;
-    
+
     @Basic(optional = false)
     @Size(min = 1, max = 2)
     @Column(name = "uf")
     private String uf;
-    
+
     @Size(max = 12)
     @Column(name = "cep")
     private String cep;
-   
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "enderecosidEnderecos")
     private List<Funcionarios> funcionariosList;
-   
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "endereco")
     private List<Pacientes> pacientesList;
 
@@ -202,5 +207,4 @@ public class Enderecos implements Serializable {
     public String toString() {
         return "br.edu.uniacademia.hospital.model.Enderecos[ idEndereco=" + idEndereco + " ]";
     }
-    
 }

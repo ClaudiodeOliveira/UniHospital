@@ -36,7 +36,7 @@
                                                              value="#{lista}" />
                             </p:commandButton>
 
-                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{tipoFuncionarioBean.remover(lista)}" process="@this" update="tabela"/> 
+                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{tipoFuncionarioBean.remover(lista)}" process="@this" update="@form"/> 
                         </center>
                     </p:column>
                 </p:dataTable>
@@ -85,13 +85,6 @@
                 <p:commandButton value="Salvar"  
                                  actionListener="#{tipoFuncionarioBean.gravar}" onclick="record.hide()" alt="Record"/> 
             </p:dialog>
-
-            <p:dialog header="Deletar" widgetVar="remove" modal="false"> 
-                Você tem certeza?
-                <p:commandButton value="Deletar"  
-                                 actionListener="#{tipoFuncionarioBean.remover(lista)}" onclick="remove.hide()" alt="Delete" update="tabela"  process="@this"/> 
-            </p:dialog>
-
 
         </h:form>
 

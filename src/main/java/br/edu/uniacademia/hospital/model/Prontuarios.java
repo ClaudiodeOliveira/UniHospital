@@ -55,9 +55,11 @@ public class Prontuarios implements Serializable {
     @Size(max = 255)
     @Column(name = "observacoes")
     private String observacoes;
+    
     @JoinColumn(name = "Funcionarios_idFuncionario", referencedColumnName = "idFuncionario")
     @ManyToOne(optional = false)
     private Funcionarios funcionariosidFuncionario;
+   
     @JoinColumn(name = "Pacientes_idPaciente", referencedColumnName = "idPaciente")
     @ManyToOne(optional = false)
     private Pacientes pacientesidPaciente;

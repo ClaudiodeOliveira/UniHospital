@@ -13,14 +13,14 @@
 
     <ui:define name="content">
 
-        <h2 class="page-header">Gerenciar De Funcinários</h2>
+        <h2 class="page-header">Gerenciar De Pacientes</h2>
         <br/>
-        <h:form id="formPrincipal2">
+        <h:form id="formPaciente">
             <p:messages id="messages" showDetail="true" closable="true" />
 
             <div align="center">
                 <p:dataTable var="listaPac" value="#{pacienteBean.pacienteList}"
-                             id="tabela3" emptyMessage="Nenhum registro encontrado"
+                             id="tabela" emptyMessage="Nenhum registro encontrado"
                              paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                              paginator="true" rows="10" rowsPerPageTemplate="5,10,25,50,100,9999" style="width:100%">
 
@@ -36,18 +36,21 @@
                     <p:column headerText="RG" sortBy="#{listaPac.sexo}" filterBy="#{listaPac.sexo}">
                         <p:outputLabel value="#{listaPac.sexo}"/>                        
                     </p:column>
-                    <p:column headerText="Data" sortBy="#{listaPac.dataNascimento}" filterBy="#{listaPac.dataNascimento}">
-                        <p:outputLabel value="#{listaPac.dataNascimento}"/>                        
+                    <p:column headerText="Data" sortBy="#{listaPac.dataNascimento.time}" filterBy="#{listaPac.dataNascimento.time}">
+                        <p:outputLabel value="#{listaPac.dataNascimento.time}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/São_Paulo"/>
+
+                        </p:outputLabel>                        
                     </p:column>
 
                     <p:column headerText="Opções" exportable="false">
                         <center>
-                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();"> 
-                                <f:setPropertyActionListener target="#{pacienteBean.carregar(listaPac)}"
+                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();" update="formPaciente:panelRecord" process="@this"> 
+                                <f:setPropertyActionListener target="#{pacienteBean.pacientes}"
                                                              value="#{listaPac}" />
                             </p:commandButton>
 
-                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{pacienteBean.remover(listaPac)}" process="@this" update="tabela2"/>
+                            <p:commandButton icon="ui-icon-trash" value="Deletar" action="#{pacienteBean.remover(listaPac)}" process="@this" update="tabela"/>
 
                         </center>
                     </p:column>
@@ -84,40 +87,40 @@
                 </h:commandLink>
 
             </div>
-        </h:form>
 
-        <h:form id="dialog">
+
+
             <p:dialog header="Novo" widgetVar="record" modal="true" focus="paciente">
 
 
-                <p:panelGrid id="panelRecord" columns="4"> 
+                <p:panelGrid id="panelRecord" columns="2"> 
                     <p:outputLabel for="paciente" value="Nome:"/>
                     <p:inputText id="paciente" value="#{pacienteBean.pacientes.nomePaciente}"  />
                     <p:outputLabel value="CPF:" for="cpf"/>
                     <p:inputMask id="cpf" value="#{pacienteBean.pacientes.cpf}" mask="99999999999" placeholder="99999999999"/>
+
                     <p:outputLabel for="sexo" value="Sexo:"/>
-                    <p:inputMask id="sexo" value="#{pacienteBean.pacientes.sexo}" mask="a" placeholder="M ou F"/>
-                    <p:outputLabel for="dataNas" value="Data de Nascimento" />
-                    
-                    <p:calendar id="dataNas" value="#{pacienteBean.pacientes.dataNascimento.time}"
-                                timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true"/>
-                    
-                    <p:outputLabel value="Selecione o  Funcionario:" for="funcionario"/>
-                    <p:selectOneMenu value="#{pacienteBean.funcionarioId}" id="funcionario"  >
-                        <f:selectItems value="#{pacienteBean.funcionarios}" var="funcionario"
-                                       itemLabel="#{funcionario.nomeFuncionario}" itemValue="#{funcionario.idFuncionario}"/>
+                    <p:selectOneMenu id="sexo" value="#{pacienteBean.pacientes.sexo}">
+                        <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                        <f:selectItem itemLabel="Feminino" itemValue="F"/>
+                        <f:selectItem itemLabel="Outros" itemValue="O"/>
                     </p:selectOneMenu>
-                    
-                    <p:calendar id="data" value="#{pacienteBean.prontuarios.data.time}"
-                                timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true" disabled="true"/>
 
-                    <p:outputLabel for="descricao" value="Descrição"/>
-                    <p:inputText id="descricao" value="#{pacienteBean.prontuarios.descricao}"/>
+                    <p:outputLabel for="sangue" value="Tipo Sanguineo"/>
+                    <p:selectOneMenu id="sangue" value="#{pacienteBean.pacientes.tipoSanguineo}">
+                        <f:selectItem itemLabel="O+" itemValue="O+"/>
+                        <f:selectItem itemLabel="O-" itemValue="O-"/>
+                        <f:selectItem itemLabel="AB+" itemValue="AB+"/>
+                        <f:selectItem itemLabel="AB-" itemValue="AB-"/>
+                        <f:selectItem itemLabel="A+" itemValue="A+"/>
+                        <f:selectItem itemLabel="A-" itemValue="A-"/>
+                        <f:selectItem itemLabel="B+" itemValue="B+"/>
+                        <f:selectItem itemLabel="B-" itemValue="B-"/>
+                    </p:selectOneMenu>
 
-                    <p:outputLabel for="observacao" value="Observação"/>
-                    <p:inputText id="observacao" value="#{pacienteBean.prontuarios.observacoes}"/>
-
-                    <p:outputLabel for="descricao" value="Descrição"/>
+                    <p:outputLabel for="dataNas" value="Data de Nascimento" />
+                    <p:calendar id="dataNas" value="#{pacienteBean.pacientes.dataNascimento.time}"
+                                timeZone="America/Sao_Paulo" pattern="dd/MM/yyyy" mask="true"/>                    
 
                     <p:outputLabel value="Logradouro" for="logradouro"/>
                     <p:inputText id="logradouro" value="#{pacienteBean.enderecos.logradouro}"/>
@@ -150,7 +153,7 @@
             <p:dialog header="Deletar" widgetVar="remove" modal="false"> 
                 Você tem certeza?
                 <p:commandButton value="Deletar"  
-                                 actionListener="#{pacienteBean.remover(listaPac)}" onclick="remove.hide()" alt="Delete" process="@this" update=":formPrincipal2" /> 
+                                 actionListener="#{pacienteBean.remover(listaPac)}" onclick="remove.hide()" alt="Delete" process="@this" update=":formPaciente" /> 
             </p:dialog>
         </h:form>
 

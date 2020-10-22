@@ -72,7 +72,7 @@ public class Funcionarios implements Serializable {
     private List<Prontuarios> prontuariosList;
 
     @JoinColumn(name = "Enderecos_idEnderecos", referencedColumnName = "idEndereco")
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(optional = false)
     private Enderecos enderecosidEnderecos;
 
     @JoinColumn(name = "tipoFuncionario_idtipoFuncionario", referencedColumnName = "idtipoFuncionario")

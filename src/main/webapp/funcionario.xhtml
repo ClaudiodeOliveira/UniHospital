@@ -15,7 +15,7 @@
 
         <h2 class="page-header">Gerenciar De Funcinários</h2>
         <br/>
-        <h:form id="formPrincipal2">
+        <h:form id="formFuncionario">
             <p:messages id="messages" showDetail="true" closable="true" />
 
             <div align="center">
@@ -45,7 +45,7 @@
 
                     <p:column headerText="Opções" exportable="false">
                         <center>
-                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();" update="formPrincipal2:panelRecord" process="@this"> 
+                            <p:commandButton icon="ui-icon-pencil" value="Editar" onclick="PF('record').show();" update="formFuncionario:panelRecord" process="@this"> 
                                 <f:setPropertyActionListener target="#{funcinarioBean.funcionario}"
                                                              value="#{listaFun}" />
                             </p:commandButton>
@@ -93,13 +93,13 @@
 
                 <p:panelGrid id="panelRecord" columns="2"> 
                     Nome:
-                    <p:inputText id="funcionario" value="#{funcinarioBean.funcionario.nomeFuncionario}"  />
+                    <p:inputText id="funcionario" value="#{funcinarioBean.funcionario.nomeFuncionario}" required="true" />
                     <p:outputLabel value="CPF:" for="cpf"/>
-                    <p:inputMask id="cpf" value="#{funcinarioBean.funcionario.cpf}" mask="99999999999" placeholder="99999999999"/>
+                    <p:inputMask id="cpf" value="#{funcinarioBean.funcionario.cpf}" mask="99999999999" placeholder="99999999999" required="true"/>
                     <p:outputLabel for="rg" value="RG:"/>
-                    <p:inputMask id="rg" value="#{funcinarioBean.funcionario.rg}" mask="aa99999999" placeholder="MG99999999"/>
+                    <p:inputMask id="rg" value="#{funcinarioBean.funcionario.rg}" mask="aa99999999" placeholder="MG99999999" required="true"/>
                     <p:outputLabel for="crm" value="CRM:"/>
-                    <p:inputMask id="crm" value="#{funcinarioBean.funcionario.crm}" mask="aa999" placeholder="SP999"/>  
+                    <p:inputMask id="crm" value="#{funcinarioBean.funcionario.crm}" mask="aa999" placeholder="SP999" required="true"/>  
                     <p:outputLabel value="Selecione o Tipo de Funcionario:" for="tipoFuncionario"/>
                     <p:selectOneMenu value="#{funcinarioBean.tipoFuncionarioId}" id="tipoFuncionario" >
                         <f:selectItems value="#{funcinarioBean.tipoFuncionarios}" var="tipoFuncionario"
@@ -113,7 +113,7 @@
                     <p:inputText id="localidade" value="#{funcinarioBean.enderecos.localidade}"/>
 
                     <p:outputLabel value="CEP" for="cep"/>
-                    <p:inputMask id="cep" value="#{funcinarioBean.enderecos.cep}" mask="99999999"/>
+                    <p:inputMask id="cep" value="#{funcinarioBean.enderecos.cep}"  mask="99999999"/>
 
                     <p:outputLabel value="Complemento" for="complemneto"/>
                     <p:inputText id="complemneto" value="#{funcinarioBean.enderecos.complemento}"/>
@@ -132,6 +132,7 @@
                 <br/>
                 <p:commandButton value="Salvar"  
                                  actionListener="#{funcinarioBean.gravar}" onclick="record.hide()" alt="Record"/> 
+                
             </p:dialog>
 
         </h:form>
