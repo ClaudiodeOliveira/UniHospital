@@ -82,4 +82,8 @@ public class TipoFuncionarioBean implements Serializable {
         this.tipoFuncionario = tipoFuncionario;
     }
 
+    public void novo() {
+        this.tipoFuncionario = new TipoFuncionario();
+    }
+
 }

@@ -6,7 +6,12 @@
     xmlns:p="http://primefaces.org/ui">
     <header>
         <h1>Hospital</h1>
-        <h:form>  
+
+        <h:panelGrid columns="2">
+            <h:form rendered="#{usuarioLogado != null}" style="position:absolute; right: 10px;"/>  
+        </h:panelGrid>
+
+        <h:form rendered="#{usuarioLogado != null}">  
             <p:menubar>
                 <p:menuitem value="Início" icon="ui-icon-home" url="faces/index.xhtml" />
                 <p:submenu label="Gerenciar" icon="ui-icon-gear">
@@ -20,6 +25,7 @@
                     <p:menuitem value="Consulta por Quarto" icon="ui-icon-print" url="faces/consulta_quarto.xhtml"/>
                     <p:menuitem value="Relatório" icon="ui-icon-print" url="faces/relatorio.xhtml"/>
                 </p:submenu>
+                <p:menuitem value="Logout" action="#{loginBean.deslogar}" icon="fa fa-fw fa-sign-out"/>
             </p:menubar>
         </h:form>
     </header>

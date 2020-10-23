@@ -95,4 +95,9 @@ public class PacienteBean implements Serializable {
         this.pacientes = pacientes;
         this.enderecos = enddao.buscarPorId(pacientes.getEndereco().getIdEndereco());
     }
+
+    public void novo() {
+        this.pacientes = new Pacientes();
+        this.enderecos = new Enderecos();
+    }
 }

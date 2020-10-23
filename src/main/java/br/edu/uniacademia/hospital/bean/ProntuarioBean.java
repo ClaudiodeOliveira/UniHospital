@@ -66,6 +66,10 @@ public class ProntuarioBean implements Serializable {
         this.prontuarios = this.prontdao.buscarPorId(prontuarioId);
     }
 
+    public void novo() {
+        this.prontuarios = new Prontuarios();
+    }
+
     @Transacional
     public String gravar() {
         System.out.println("Gravando Prontuaio" + this.prontuarios.getIdProntuario());
@@ -130,7 +134,6 @@ public class ProntuarioBean implements Serializable {
     public void setPacientes(Pacientes pacientes) {
         this.pacientes = pacientes;
     }
-
 
     public void setFuncionarios(Funcionarios funcionarios) {
         this.funcionarios = funcionarios;

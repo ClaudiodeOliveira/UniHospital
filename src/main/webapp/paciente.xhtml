@@ -57,7 +57,8 @@
                 </p:dataTable>
 
                 <p:column>
-                    <p:commandButton icon="ui-icon-plus" value="Novo" onclick="PF('record').show();">  
+                    <p:commandButton icon="ui-icon-plus" value="Novo" onclick="PF('record').show();" action="#{pacienteBean.novo}" 
+                                     update="formPaciente:panelRecord" process="@this">  
                     </p:commandButton> 
                 </p:column>
 
@@ -68,22 +69,22 @@
 
                 <h:commandLink>
                     <p:graphicImage name="images/exports/excel.png" width="24"/>
-                    <p:dataExporter type="xls" target="tabela2" fileName="arq" />
+                    <p:dataExporter type="xls" target="tabela" fileName="arq" />
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="images/exports/pdf.png" width="24"/>
-                    <p:dataExporter type="pdf" target="tabela2" fileName="arq"/>
+                    <p:dataExporter type="pdf" target="tabela" fileName="arq"/>
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="images/exports/csv.png" width="24"/>
-                    <p:dataExporter type="csv" target="tabela2" fileName="arq" />
+                    <p:dataExporter type="csv" target="tabela" fileName="arq" />
                 </h:commandLink>
 
                 <h:commandLink>
                     <p:graphicImage name="images/exports/xml.png" width="24"/>
-                    <p:dataExporter type="xml" target="tabela2" fileName="arq" />
+                    <p:dataExporter type="xml" target="tabela" fileName="arq" />
                 </h:commandLink>
 
             </div>

@@ -42,7 +42,7 @@
                 </p:dataTable>
 
                 <p:column>
-                    <p:commandButton icon="ui-icon-plus" value="Novo" onclick="PF('record').show();">  
+                    <p:commandButton icon="ui-icon-plus" value="Novo" onclick="PF('record').show();" update="formPrincipal:panelRecord" action="#{tipoFuncionarioBean.novo}">  
                     </p:commandButton> 
                 </p:column>
 

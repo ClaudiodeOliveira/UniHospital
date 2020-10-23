@@ -153,4 +153,9 @@ public class FuncinarioBean implements Serializable {
 
     }
 
+    public void novo() {
+        this.funcionario = new Funcionarios();
+        this.enderecos = new Enderecos();
+    }
+
 }
